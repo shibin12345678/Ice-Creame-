@@ -8,7 +8,7 @@ import "./Main.css";
 import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
-
+  const [isToggleActive, setIsToggleActive] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
       
 
@@ -22,6 +22,10 @@ const Main = () => {
   };
 
   const navigate=useNavigate();
+         
+  const handleToggleClick = () => {
+    setIsToggleActive((prev) => !prev);
+  };
 
 
 
@@ -31,11 +35,12 @@ const Main = () => {
     
     
     
-  <section class="main">
+   <section className={`main ${isToggleActive ? 'active' : ''}`}>
     <header>
       <a href="#"><img src={picture} class="logo"/></a>
-      <div class="toggle"  style={{color:"black"}}></div>
-      <ul class="navigation">
+      <div className={`toggle ${isToggleActive ? 'active' : ''}`} onClick={handleToggleClick}></div>
+          
+      <ul className={`navigation ${isToggleActive ? 'active' : ''}`}>
         <li><a href="#" >Home</a></li>
         <li><a href="#" onClick={()=>navigate("/menu")}>Menu</a></li>
         <li><a href="#">About</a></li>
