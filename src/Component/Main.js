@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import picture  from "../Pics/picture.png";
 import slides from './Slides';
+import "./Main.css"
 
 
 import "./Main.css";
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
 
@@ -19,6 +21,7 @@ const Main = () => {
     setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
   };
 
+  const navigate=useNavigate();
 
 
 
@@ -30,11 +33,11 @@ const Main = () => {
     
   <section class="main">
     <header>
-      <a href="#"><img src={picture } class="logo"/></a>
+      <a href="#"><img src={picture} class="logo"/></a>
       <div class="toggle"  style={{color:"black"}}></div>
       <ul class="navigation">
         <li><a href="#" >Home</a></li>
-        <li><a href="#">Menu</a></li>
+        <li><a href="#" onClick={()=>navigate("/menu")}>Menu</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
@@ -43,7 +46,7 @@ const Main = () => {
       <div class="text">
         <h2>We are scream<br/>for <span>Ice cream</span></h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, adipisci obcaecati! Accusamus fugiat obcaecati nesciunt maiores rerum placeat amet voluptatibus cumque soluta similique saepe, assumenda eos dolorum autem. Iusto enim accusamus optio cupiditate earum ipsam!</p>
-        <button href="#" class="btn">Order Now</button>
+        <button class="btn1">Order Now</button>
       </div>
       <div className="slider">
           {slides.map((slide, index) => (
@@ -68,7 +71,7 @@ const Main = () => {
     </div>
   </section>
  
-
+  
     
     </>
   )
